@@ -47,6 +47,7 @@ class PubMedAPI
 		$this->term = $term;
 		if ($this->exact_match) {
 			$this->term = urlencode(sprintf('"%s"',$this->term));
+			$this->term = str_replace("%22", "", $this->term);    #Have to strip the enclosing double quotes.
 		}
 
 		// Load cached results
